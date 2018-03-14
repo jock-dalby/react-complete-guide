@@ -3,13 +3,17 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    dogsName: 'Alfie'
+  }
   render() {
     return (
       <div className="App">
         <Person name="Jock" age="32"/>
         <Person name="Nele" age="33"/>
-        <Person name="Alfie" age="1">Alfie the dog!</Person>
         <Person name="Leon" age="0"/>
+        <Person name={this.state.dogsName} age="1">({this.state.dogsName} is a dog!)</Person>
+        <button>Switch name</button>
       </div>
     );
 
