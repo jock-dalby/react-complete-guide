@@ -8,7 +8,8 @@ class App extends Component {
   }
 
   switchNameHandler = () => {
-    console.log("switchNameHandler works");
+    // DON'T DO THIS ==> this.state.dogsName = 'super Alfie';
+    this.setState({dogsName: 'super Alfie'});
   }
   render() {
     return (
