@@ -7,18 +7,18 @@ class App extends Component {
     dogsName: 'Alfie'
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     // DON'T DO THIS ==> this.state.dogsName = 'super Alfie';
-    this.setState({dogsName: 'super Alfie'});
+    this.setState({dogsName: newName});
   }
   render() {
     return (
       <div className="App">
         <Person name="Jock" age="32"/>
-        <Person name="Nele" age="33"/>
+        <Person switchNameHandler={this.switchNameHandler.bind(this, 'super Alfie')} name="Nele" age="33"/>
         <Person name="Leon" age="0"/>
         <Person name={this.state.dogsName} age="1">({this.state.dogsName} is a dog!)</Person>
-        <button onClick={this.switchNameHandler}>Switch name</button>
+        <button onClick={this.switchNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
       </div>
     );
 
