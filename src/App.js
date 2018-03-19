@@ -6,6 +6,10 @@ class App extends Component {
   state = {
     dogsName: 'Alfie'
   }
+
+  switchNameHandler = () => {
+    console.log("switchNameHandler works");
+  }
   render() {
     return (
       <div className="App">
@@ -13,7 +17,7 @@ class App extends Component {
         <Person name="Nele" age="33"/>
         <Person name="Leon" age="0"/>
         <Person name={this.state.dogsName} age="1">({this.state.dogsName} is a dog!)</Person>
-        <button>Switch name</button>
+        <button onClick={this.switchNameHandler}>Switch name</button>
       </div>
     );
 
