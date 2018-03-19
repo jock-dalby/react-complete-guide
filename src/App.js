@@ -4,21 +4,52 @@ import Person from './Person/Person';
 
 class App extends Component {
   state = {
-    dogsName: 'Alfie'
+    persons: [
+      { name: 'Jock', age: 32 },
+      { name: 'Nele', age: 33 },
+      { name: 'Leon', age: 0 },
+      { name: 'Alfie', age: 1 },
+    ]
   }
 
-  switchNameHandler = (newName) => {
-    // DON'T DO THIS ==> this.state.dogsName = 'super Alfie';
-    this.setState({dogsName: newName});
+  switchAlfiesNameHandler = (newName) => {
+    this.setState({
+      persons: [
+        ...this.state.persons.slice(0, 3),
+        { name: newName , age: 1 }
+      ]
+    });
   }
+
+  nameChangedHandler = (event) => {
+    // Make a copy
+    const persons = [...this.state.persons];
+    // Change the copy
+    persons[+event.target.name].name = event.target.value;
+    // Overwrite original with updated copy
+    this.setState({
+      persons
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Person name="Jock" age="32"/>
-        <Person switchNameHandler={this.switchNameHandler.bind(this, 'super Alfie')} name="Nele" age="33"/>
-        <Person name="Leon" age="0"/>
-        <Person name={this.state.dogsName} age="1">({this.state.dogsName} is a dog!)</Person>
-        <button onClick={this.switchNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
+        {
+          this.state.persons.map((el, i) => {
+            return <Person name={el.name}
+                      age={el.age}
+                      key={i}
+                      index={i}
+                      nameChangedHandler={this.nameChangedHandler} />
+          })
+        }
+        {/* Two ways to dynamically pass values to event handlers:
+          1. Assigning an anonymous arrow funtion to the click event which will
+            handle the call of the handler method when executed.
+          2. Using the bind method as below. This is the preferred, more efficient method.
+        */}
+        <button onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
       </div>
     );
 

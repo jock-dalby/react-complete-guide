@@ -3,8 +3,12 @@ import React from 'react';
 const person = (props) => {
     return (
         <div>
-            <p onClick={props.switchNameHandler} >I am {props.name} and I am {props.age} years old!</p>
+            <p onClick={props.switchAlfiesNameHandler} >I am {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
+            <input type="text"
+                name={props.index}
+                value={props.name}
+                onChange={props.nameChangedHandler}/>
         </div>
     )
 }
