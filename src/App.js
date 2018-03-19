@@ -33,8 +33,22 @@ class App extends Component {
   }
 
   render() {
+
+    // All values must be wrapped in quotation marks because this is JS code and therefore
+    // must use strings.
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
     return (
       <div className="App">
+      <p>Dalby Family Massive (NZ)</p>
+      <button style={style}
+        onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
         {
           this.state.persons.map((el, i) => {
             return <Person name={el.name}
@@ -49,7 +63,6 @@ class App extends Component {
             handle the call of the handler method when executed.
           2. Using the bind method as below. This is the preferred, more efficient method.
         */}
-        <button onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
       </div>
     );
 
