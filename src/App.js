@@ -22,6 +22,14 @@ class App extends Component {
     });
   }
 
+  deletePersonHandler = (index) => {
+    const persons = this.state.persons;
+    persons.splice(index, 1);
+    this.setState({
+      persons
+    })
+  }
+
   nameChangedHandler = (event) => {
     // Make a copy
     const persons = [ ...this.state.persons ];
@@ -57,14 +65,13 @@ class App extends Component {
       persons = (
         <div>
           {
-            this.state.persons.map((el, i) => {
-              return (
-                <Person name={el.name}
-                  age={el.age}
-                  key={i}
-                  index={i}
-                  nameChangedHandler={this.nameChangedHandler} />
-              )
+            this.state.persons.map((person, i) => {
+              return <Person name={person.name}
+                age={person.age}
+                key={i}
+                index={i}
+                deletePersonHandler={this.deletePersonHandler.bind(this, i)}
+                nameChangedHandler={this.nameChangedHandler} />
             })
           }
         </div>

@@ -10,6 +10,7 @@ const person = (props) => {
                 name={props.index}
                 value={props.name}
                 onChange={props.nameChangedHandler}/>
+            <button onClick={props.deletePersonHandler}>Delete</button>
         </div>
     )
 }
