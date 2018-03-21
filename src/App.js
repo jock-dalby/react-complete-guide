@@ -9,7 +9,8 @@ class App extends Component {
       { name: 'Nele', age: 33 },
       { name: 'Leon', age: 0 },
       { name: 'Alfie', age: 1 },
-    ]
+    ],
+    showPerson: false
   }
 
   switchAlfiesNameHandler = (newName) => {
@@ -32,6 +33,12 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = () => {
+    this.setState({
+      showPerson: !this.state.showPerson
+    })
+  }
+
   render() {
 
     // All values must be wrapped in quotation marks because this is JS code and therefore
@@ -49,13 +56,16 @@ class App extends Component {
       <p>Dalby Family Massive (NZ)</p>
       <button style={style}
         onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
+      <button style={style}
+        onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {
           this.state.persons.map((el, i) => {
-            return <Person name={el.name}
+            return this.state.showPerson ?  <Person name={el.name}
                       age={el.age}
                       key={i}
                       index={i}
                       nameChangedHandler={this.nameChangedHandler} />
+                      : null
           })
         }
         {/* Two ways to dynamically pass values to event handlers:
