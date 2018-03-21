@@ -5,10 +5,10 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Jock', age: 32 },
-      { name: 'Nele', age: 33 },
-      { name: 'Leon', age: 0 },
-      { name: 'Alfie', age: 1 },
+      { id: 1, name: 'Jock', age: 32 },
+      { id: 2, name: 'Nele', age: 33 },
+      { id: 3, name: 'Leon', age: 0 },
+      { id: 4, name: 'Alfie', age: 1 },
     ],
     showPerson: false
   }
@@ -31,11 +31,14 @@ class App extends Component {
     })
   }
 
-  nameChangedHandler = (event) => {
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    })
     // Make a copy
     const persons = [ ...this.state.persons ];
     // Change the copy
-    persons[ +event.target.name ].name = event.target.value;
+    persons[ personIndex ].name = event.target.value;
     // Overwrite original with updated copy
     this.setState({
       persons
@@ -69,10 +72,10 @@ class App extends Component {
             this.state.persons.map((person, i) => {
               return <Person name={person.name}
                 age={person.age}
-                key={i}
+                key={person.id}
                 index={i}
                 deletePersonHandler={this.deletePersonHandler.bind(this, i)}
-                nameChangedHandler={this.nameChangedHandler} />
+                nameChangedHandler={event => this.nameChangedHandler(event, person.id)} />
             })
           }
         </div>
