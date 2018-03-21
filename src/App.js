@@ -17,16 +17,16 @@ class App extends Component {
     this.setState({
       persons: [
         ...this.state.persons.slice(0, 3),
-        { name: newName , age: 1 }
+        { name: newName, age: 1 }
       ]
     });
   }
 
   nameChangedHandler = (event) => {
     // Make a copy
-    const persons = [...this.state.persons];
+    const persons = [ ...this.state.persons ];
     // Change the copy
-    persons[+event.target.name].name = event.target.value;
+    persons[ +event.target.name ].name = event.target.value;
     // Overwrite original with updated copy
     this.setState({
       persons
@@ -51,23 +51,28 @@ class App extends Component {
       cursor: 'pointer'
     };
 
+    let persons = null
+
+    if (this.state.showPerson) {
+      persons = this.state.persons.map((el, i) => {
+        return <Person name={el.name}
+          age={el.age}
+          key={i}
+          index={i}
+          nameChangedHandler={this.nameChangedHandler} />
+      })
+    } else {
+      persons = null;
+    };
+
     return (
       <div className="App">
-      <p>Dalby Family Massive (NZ)</p>
-      <button style={style}
-        onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
-      <button style={style}
-        onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {
-          this.state.persons.map((el, i) => {
-            return this.state.showPerson ?  <Person name={el.name}
-                      age={el.age}
-                      key={i}
-                      index={i}
-                      nameChangedHandler={this.nameChangedHandler} />
-                      : null
-          })
-        }
+        <p>Dalby Family Massive (NZ)</p>
+        <button style={style}
+          onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
+        <button style={style}
+          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
         {/* Two ways to dynamically pass values to event handlers:
           1. Assigning an anonymous arrow funtion to the click event which will
             handle the call of the handler method when executed.
