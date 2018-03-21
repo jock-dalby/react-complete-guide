@@ -54,13 +54,21 @@ class App extends Component {
     let persons = null
 
     if (this.state.showPerson) {
-      persons = this.state.persons.map((el, i) => {
-        return <Person name={el.name}
-          age={el.age}
-          key={i}
-          index={i}
-          nameChangedHandler={this.nameChangedHandler} />
-      })
+      persons = (
+        <div>
+          {
+            this.state.persons.map((el, i) => {
+              return (
+                <Person name={el.name}
+                  age={el.age}
+                  key={i}
+                  index={i}
+                  nameChangedHandler={this.nameChangedHandler} />
+              )
+            })
+          }
+        </div>
+      )
     } else {
       persons = null;
     };
