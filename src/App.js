@@ -56,7 +56,8 @@ class App extends Component {
     // All values must be wrapped in quotation marks because this is JS code and therefore
     // must use strings.
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -82,13 +83,21 @@ class App extends Component {
         </div>
       )
     } else {
-      style.backgroundColor = 'green'
       persons = null;
     };
 
+    const classes = [];
+
+    if (this.state.persons.length <= 2) {
+      classes.push('red'); // classes = ['red']
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold'); // classes = ['red', 'bold']
+    }
+
     return (
       <div className="App">
-        <p>Dalby Family Massive (NZ)</p>
+        <p className={classes.join(' ')}>Dalby Family Massive (NZ)</p>
         <button
           onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
         <button style={style}
