@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium, { StyleRoot } from 'radium';
 
 class App extends Component {
   state = {
@@ -62,21 +61,13 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      cursor: 'pointer'
     };
 
     let persons = null
 
     if (this.state.showPerson) {
       style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
       persons = (
         <div>
           {
@@ -105,27 +96,16 @@ class App extends Component {
     }
 
     return (
-      /*
-        To enable use of inline media queries (as used in Person.js) we need to
-        wrap the entire root in StyleRoot component provided by radium.
-      */
-      <StyleRoot>
-        <div className="App">
-          <p className={classes.join(' ')}>Dalby Family Massive (NZ)</p>
-          <button
-            onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
-          <button style={style}
-            onClick={this.togglePersonsHandler}>
-            {this.state.showPerson ? 'Hide Persons' : 'Show Persons'}
-          </button>
-          {persons}
-          {/* Two ways to dynamically pass values to event handlers:
-            1. Assigning an anonymous arrow funtion to the click event which will
-              handle the call of the handler method when executed.
-            2. Using the bind method as below. This is the preferred, more efficient method.
-          */}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <p className={classes.join(' ')}>Dalby Family Massive (NZ)</p>
+        <button
+          onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
+        <button style={style}
+          onClick={this.togglePersonsHandler}>
+          {this.state.showPerson ? 'Hide Persons' : 'Show Persons'}
+        </button>
+        {persons}
+      </div>
     );
 
     /**
@@ -148,11 +128,4 @@ class App extends Component {
      */
   }
 }
-
-/*
-  In any component where we want to use Radiums features (inline media queries and pseudo selectors)
-  we have to wrap the component in the Radium higher-order component provided by Radium package.
-  A higher-order component is a component which wraps another component to add some
-  extra functionality.
-*/
-export default Radium(App);
+export default App;
