@@ -66,6 +66,7 @@ class App extends Component {
     let persons = null
 
     if (this.state.showPerson) {
+      style.backgroundColor = 'red'
       persons = (
         <div>
           {
@@ -81,16 +82,19 @@ class App extends Component {
         </div>
       )
     } else {
+      style.backgroundColor = 'green'
       persons = null;
     };
 
     return (
       <div className="App">
         <p>Dalby Family Massive (NZ)</p>
-        <button style={style}
+        <button
           onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
         <button style={style}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          onClick={this.togglePersonsHandler}>
+          {this.state.showPerson ? 'Hide Persons' : 'Show Persons'}
+        </button>
         {persons}
         {/* Two ways to dynamically pass values to event handlers:
           1. Assigning an anonymous arrow funtion to the click event which will
