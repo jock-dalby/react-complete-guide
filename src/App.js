@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -86,18 +86,18 @@ class App extends Component {
       persons = null;
     };
 
-    const classes = [];
+    const assignedClasses = [];
 
     if (this.state.persons.length <= 2) {
-      classes.push('red'); // classes = ['red']
+      assignedClasses.push(classes.red); // assignedClasses = ['red']
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold'); // classes = ['red', 'bold']
+      assignedClasses.push(classes.bold); // assignedClasses = ['red', 'bold']
     }
 
     return (
-      <div className="App">
-        <p className={classes.join(' ')}>Dalby Family Massive (NZ)</p>
+      <div className={classes.App}>
+        <p className={assignedClasses.join(' ')}>Dalby Family Massive (NZ)</p>
         <button
           onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
         <button style={style}
