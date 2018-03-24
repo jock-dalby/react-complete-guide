@@ -6,7 +6,7 @@ const person = (props) => {
     const rnd = Math.random();
 
     if (rnd > 0.7) {
-        throw new error('Something went wrong');
+        throw new Error('Something went wrong');
     }
     return (
         <div className={classes.Person}>
