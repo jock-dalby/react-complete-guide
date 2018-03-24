@@ -6,6 +6,8 @@ If we simulate throwing an error as we have in Person.js, in dev mode we will st
 a breaking error but in production, the app will gracefully handle the error and display
 the error message inside the dom.
 
+More info here ==> https://reactjs.org/docs/error-boundaries.html
+
 */
 
 class ErrorBoundary extends Component {
