@@ -53,21 +53,11 @@ class App extends Component {
 
   render() {
 
-    // All values must be wrapped in quotation marks because this is JS code and therefore
-    // must use strings.
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
-    let persons = null
+    let persons = null;
+    let btnClass = '';
 
     if (this.state.showPerson) {
-      style.backgroundColor = 'red';
+      btnClass = classes.red;
       persons = (
         <div>
           {
@@ -98,9 +88,8 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <p className={assignedClasses.join(' ')}>Dalby Family Massive (NZ)</p>
-        <button
-          onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
-        <button style={style}
+        <button onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
+        <button className={btnClass}
           onClick={this.togglePersonsHandler}>
           {this.state.showPerson ? 'Hide Persons' : 'Show Persons'}
         </button>
