@@ -65,7 +65,7 @@ class App extends Component {
         <Dashboard
           persons={this.state.persons}
           showPerson={this.state.showPerson}
-          togglePersonsHandler={this.togglePersonsHandler}
+          clicked={this.togglePersonsHandler}
           ></Dashboard>
         {persons}
       </div>

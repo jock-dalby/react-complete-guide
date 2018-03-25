@@ -21,7 +21,7 @@ const Dashboard = (props) => {
     <div className={classes.Dashboard}>
       <p className={assignedClasses.join(' ')}>Dalby Family Massive (NZ)</p>
       <button className={btnClass}
-        onClick={props.togglePersonsHandler}>
+        onClick={props.clicked}>
         {props.showPerson ? 'Hide Persons' : 'Show Persons'}
       </button>
     </div>
