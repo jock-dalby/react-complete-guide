@@ -6,7 +6,7 @@ const Persons = (props) => props.persons.map((person, i) => {
       name={person.name}
       age={person.age}
       index={i}
-      key={person.id}
+      key={i}
       deletePersonHandler={props.clicked.bind(this, i)}
       nameChangedHandler={(event) => props.changed(event, person.id)} />
   }

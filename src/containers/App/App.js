@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../../components/Persons/Persons';
-
+import Dashboard from '../../components/Dashboard/Dashboard';
 class App extends Component {
   state = {
     persons: [
@@ -11,15 +11,6 @@ class App extends Component {
       { id: 4, name: 'Alfie', age: 1 },
     ],
     showPerson: false
-  }
-
-  switchAlfiesNameHandler = (newName) => {
-    this.setState({
-      persons: [
-        ...this.state.persons.slice(0, 3),
-        { name: newName, age: 1 }
-      ]
-    });
   }
 
   deletePersonHandler = (index) => {
@@ -54,10 +45,8 @@ class App extends Component {
   render() {
 
     let persons = null;
-    let btnClass = '';
 
     if (this.state.showPerson) {
-      btnClass = classes.red;
       persons = (
         <div>
           <Persons
@@ -71,23 +60,13 @@ class App extends Component {
       persons = null;
     };
 
-    const assignedClasses = [];
-
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red); // assignedClasses = ['red']
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold); // assignedClasses = ['red', 'bold']
-    }
-
     return (
       <div className={classes.App}>
-        <p className={assignedClasses.join(' ')}>Dalby Family Massive (NZ)</p>
-        <button onClick={this.switchAlfiesNameHandler.bind(this, 'super dooper Alfie')}>Switch name</button>
-        <button className={btnClass}
-          onClick={this.togglePersonsHandler}>
-          {this.state.showPerson ? 'Hide Persons' : 'Show Persons'}
-        </button>
+        <Dashboard
+          persons={this.state.persons}
+          showPerson={this.state.showPerson}
+          togglePersonsHandler={this.togglePersonsHandler}
+          ></Dashboard>
         {persons}
       </div>
     );
