@@ -3,6 +3,20 @@ import classes from './App.css';
 import Persons from '../../components/Persons/Persons';
 import Dashboard from '../../components/Dashboard/Dashboard';
 class App extends Component {
+
+  constructor(props) {
+  super(props)
+    console.log('[App.js] Inside of constructor', props)
+  }
+
+  componentWillMount() {
+    console.log('[App.js] componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount')
+  }
+
   state = {
     persons: [
       { id: 1, name: 'Jock', age: 32 },
@@ -43,6 +57,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] render method')
 
     let persons = null;
 
