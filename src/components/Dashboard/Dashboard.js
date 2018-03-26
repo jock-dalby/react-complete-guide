@@ -19,7 +19,7 @@ const Dashboard = (props) => {
 
   return (
     <div className={classes.Dashboard}>
-      <p className={assignedClasses.join(' ')}>Dalby Family Massive (NZ)</p>
+      <p className={assignedClasses.join(' ')}>{props.appTitle}</p>
       <button className={btnClass}
         onClick={props.clicked}>
         {props.showPerson ? 'Hide Persons' : 'Show Persons'}
