@@ -26,12 +26,12 @@ class Persons extends Component {
     return nextProps.persons !== this.props.persons;
   }
 
-  componentDidUpdate() {
-    console.log('[UPDATE Persons.js] Inside componentDidUpdate');
-  }
-
   componentWillUpdate(nextProps, nextState) {
     console.log('[UPDATE Persons.js] Inside componentWillUpdate', nextProps, nextState);
+  }
+
+  componentDidUpdate() {
+    console.log('[UPDATE Persons.js] Inside componentDidUpdate');
   }
 
   render () {

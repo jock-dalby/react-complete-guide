@@ -21,7 +21,11 @@ class App extends Component {
     console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
     // if return true, update continues
     // if return false, update will be cancelled
-    return true;
+
+    // now if the persons are already shown and the 'Show Persons'
+    // button is clicked, the component will not be re-rendered,
+    // therefore saving performance
+    return nextState.showPerson !== this.state.showPerson;
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -92,6 +96,7 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
+      <button onClick={() => this.setState({showPerson: true})}>Show persons</button>
         <Dashboard
           appTitle={this.props.title}
           persons={this.state.persons}
