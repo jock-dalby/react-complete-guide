@@ -5,7 +5,7 @@ import Dashboard from '../../components/Dashboard/Dashboard';
 class App extends Component {
 
   constructor(props) {
-  super(props)
+    super(props)
     console.log('[App.js] Inside of constructor', props)
   }
 
@@ -15,6 +15,21 @@ class App extends Component {
 
   componentDidMount() {
     console.log('[App.js] componentDidMount')
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
+    // if return true, update continues
+    // if return false, update will be cancelled
+    return true;
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState);
+  }
+
+  componentDidUpdate() {
+    console.log('[UPDATE App.js] Inside componentDidUpdate');
   }
 
   state = {
