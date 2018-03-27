@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../../components/Persons/Persons';
 import Dashboard from '../../components/Dashboard/Dashboard';
-class App extends Component {
+class App extends PureComponent {
 
   constructor(props) {
     super(props)
@@ -15,17 +15,6 @@ class App extends Component {
 
   componentDidMount() {
     console.log('[App.js] componentDidMount')
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('[UPDATE App.js] Inside shouldComponentUpdate', nextProps, nextState);
-    // if return true, update continues
-    // if return false, update will be cancelled
-
-    // now if the persons are already shown and the 'Show Persons'
-    // button is clicked, the component will not be re-rendered,
-    // therefore saving performance
-    return nextState.showPerson !== this.state.showPerson;
   }
 
   componentWillUpdate(nextProps, nextState) {
