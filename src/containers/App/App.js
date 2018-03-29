@@ -2,7 +2,10 @@ import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../../components/Persons/Persons';
 import Dashboard from '../../components/Dashboard/Dashboard';
-import WithClass from '../../hoc/WithClass';
+
+import Aux from '../../hoc/Aux';
+import altWithClass from '../../hoc/altWithClass';
+
 class App extends PureComponent {
 
   constructor(props) {
@@ -85,7 +88,7 @@ class App extends PureComponent {
     };
 
     return (
-      <WithClass classes={classes.App}>
+      <Aux>
         <button onClick={() => this.setState({showPerson: true})}>Show persons</button>
         <Dashboard
           appTitle={this.props.title}
@@ -94,7 +97,7 @@ class App extends PureComponent {
           clicked={this.togglePersonsHandler}
           ></Dashboard>
         {persons}
-      </WithClass>
+      </Aux>
     );
 
     /**
@@ -117,4 +120,4 @@ class App extends PureComponent {
      */
   }
 }
-export default App;
+export default altWithClass(App, classes.App);

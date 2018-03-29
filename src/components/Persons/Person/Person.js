@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import classes from './Person.css';
-import WithClass from '../../../hoc/WithClass';
+import altWithClass from '../../../hoc/altWithClass';
 
 class Person extends Component {
     constructor(props) {
@@ -19,16 +19,16 @@ class Person extends Component {
       render () {
         console.log('[Person.js] componentDidMount')
         return (
-        <WithClass classes={classes.Person}>
+        <Fragment>
             <p onClick={this.props.switchAlfiesNameHandler} >I am {this.props.name} and I am {this.props.age} years old!</p>
             <p>{this.props.children}</p>
             <input type="text"
                 value={this.props.name}
                 onChange={this.props.nameChangedHandler} />
             <button onClick={this.props.deletePersonHandler}>Delete</button>
-        </WithClass>
+        </Fragment>
         )
     }
 }
 
-export default Person;
+export default altWithClass(Person, classes.Person);
