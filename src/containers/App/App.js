@@ -87,13 +87,13 @@ class App extends PureComponent {
     return (
       <WithClass classes={classes.App}>
         <button onClick={() => this.setState({showPerson: true})}>Show persons</button>
-          <Dashboard
-            appTitle={this.props.title}
-            persons={this.state.persons}
-            showPerson={this.state.showPerson}
-            clicked={this.togglePersonsHandler}
-            ></Dashboard>
-          {persons}
+        <Dashboard
+          appTitle={this.props.title}
+          persons={this.state.persons}
+          showPerson={this.state.showPerson}
+          clicked={this.togglePersonsHandler}
+          ></Dashboard>
+        {persons}
       </WithClass>
     );
 
