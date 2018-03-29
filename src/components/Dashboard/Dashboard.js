@@ -1,13 +1,14 @@
 import React from 'react';
 import classes from './Dashboard.css';
+import Aux from '../../hoc/Aux';
 
 const Dashboard = (props) => {
 
   const assignedClasses = [];
-  let btnClass = '';
+  let btnClass = classes.Button;
 
   if (props.showPerson) {
-    btnClass = classes.red;
+    btnClass = [btnClass, classes.red].join(' ');
   }
 
   if (props.persons.length <= 2) {
@@ -18,13 +19,13 @@ const Dashboard = (props) => {
   }
 
   return (
-    <div className={classes.Dashboard}>
+    <Aux>
       <p className={assignedClasses.join(' ')}>{props.appTitle}</p>
       <button className={btnClass}
         onClick={props.clicked}>
         {props.showPerson ? 'Hide Persons' : 'Show Persons'}
       </button>
-    </div>
+    </Aux>
   )
 }
 
