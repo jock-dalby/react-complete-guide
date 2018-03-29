@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import classes from './Dashboard.css';
 import Aux from '../../hoc/Aux';
 
@@ -19,13 +19,13 @@ const Dashboard = (props) => {
   }
 
   return (
-    <Aux>
+    <Fragment>
       <p className={assignedClasses.join(' ')}>{props.appTitle}</p>
       <button className={btnClass}
         onClick={props.clicked}>
         {props.showPerson ? 'Hide Persons' : 'Show Persons'}
       </button>
-    </Aux>
+    </Fragment>
   )
 }
 
