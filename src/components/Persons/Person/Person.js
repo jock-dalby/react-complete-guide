@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import classes from './Person.css';
 import altWithClass from '../../../hoc/altWithClass';
 
+import PropTypes from 'prop-types';
+
 class Person extends Component {
     constructor(props) {
         super(props)
@@ -29,6 +31,18 @@ class Person extends Component {
         </Fragment>
         )
     }
+}
+/**
+ * PropTpyes does not work in functional components (which we should use as much as poss.)
+ *
+ * Docs here ===> https://reactjs.org/docs/typechecking-with-proptypes.html
+*/
+Person.propTypes = {
+    switchAlfiesNameHandler: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    nameChangedHandler: PropTypes.func,
+    deletePersonHandler: PropTypes.func
 }
 
 export default altWithClass(Person, classes.Person);

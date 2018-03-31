@@ -65,7 +65,7 @@ class App extends PureComponent {
 
   togglePersonsHandler = () => {
     /* This is the correct way to setState if using the prevState to set new value.
-      This is because if there is async code running, the state value may change while
+      This is because setState runs asynchronously and state may change while
       setState method is being exececuted. Using below syntax ensures you get the previous state throughout.
     */
     this.setState((prevState, props) => {
