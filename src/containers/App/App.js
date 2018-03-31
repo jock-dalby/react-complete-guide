@@ -36,7 +36,8 @@ class App extends PureComponent {
       { id: 3, name: 'Leon', age: 0 },
       { id: 4, name: 'Alfie', age: 1 },
     ],
-    showPerson: false
+    showPerson: false,
+    toggleClicked: 0
   }
 
   deletePersonHandler = (index) => {
@@ -63,8 +64,15 @@ class App extends PureComponent {
   }
 
   togglePersonsHandler = () => {
-    this.setState({
-      showPerson: !this.state.showPerson
+    /* This is the correct way to setState if using the prevState to set new value.
+      This is because if there is async code running, the state value may change while
+      setState method is being exececuted. Using below syntax ensures you get the previous state throughout.
+    */
+    this.setState((prevState, props) => {
+      return {
+        showPerson: !prevState.showPerson,
+        toggleClicked: prevState.toggleClicked + 1
+      }
     })
   }
 
